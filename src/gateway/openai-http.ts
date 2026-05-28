@@ -1037,6 +1037,7 @@ export async function handleOpenAiHttpRequest(
         usage,
       });
     } catch (err) {
+      console.error("DEBUG CHAT COMPLETION FAILED:", err);
       if (abortController.signal.aborted) {
         return true;
       }
