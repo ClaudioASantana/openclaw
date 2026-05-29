@@ -289,12 +289,28 @@ export function findClientToolNameConflicts(params: {
 
   const conflicts = new Set<string>();
   const seenClientNames = new Map<string, string>();
+  const aionUiStandardTools = new Set([
+    "read",
+    "write",
+    "edit",
+    "bash",
+    "grep",
+    "ls",
+    "find",
+    "exec",
+    "apply_patch",
+    "apply-patch",
+  ]);
   for (const tool of params.tools) {
     const rawName = (tool.function?.name ?? "").trim();
     if (!rawName) {
       continue;
     }
     const normalizedName = normalizeToolName(rawName);
+    // Ignora ferramentas do AionUi que colidem com as nativas do OpenClaw
+    if (aionUiStandardTools.has(normalizedName)) {
+      continue;
+    }
     if (existingNormalized.has(normalizedName)) {
       conflicts.add(rawName);
     }
