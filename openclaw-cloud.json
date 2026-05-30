@@ -1,5 +1,6 @@
 {
   "gateway": {
+    "mode": "local",
     "auth": {
       "mode": "password",
       "password": "openclaw123"
