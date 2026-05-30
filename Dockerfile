@@ -322,5 +322,5 @@ USER node
 HEALTHCHECK --interval=3m --timeout=10s --start-period=15s --retries=3 \
   CMD node -e "fetch('http://127.0.0.1:8000/healthz').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 ENTRYPOINT ["tini", "-s", "--"]
-CMD node openclaw.mjs config set --batch-json '[{"path":"gateway.controlUi.allowedOrigins","value":["https://openclaw.grupocin.com.br"]},{"path":"gateway.auth.mode","value":"password"},{"path":"gateway.auth.password","value":"openclaw123"},{"path":"gateway.controlUi.dangerouslyDisableDeviceAuth","value":true}]' && \
+CMD node openclaw.mjs config set --batch-json '[{"path":"gateway.controlUi.allowedOrigins","value":["https://openclaw.grupocin.com.br"]},{"path":"gateway.auth.mode","value":"password"},{"path":"gateway.auth.password","value":"openclaw123"},{"path":"gateway.controlUi.dangerouslyDisableDeviceAuth","value":true},{"path":"agents.defaults.model.primary","value":"mimo/mimo-v2-pro"},{"path":"models.providers.mimo","value":{"baseUrl":"https://proxy.grupocin.com.br/v1","api":"openai-completions","apiKey":"local","models":[{"id":"mimo-v2-pro","name":"Mimo V2 Pro","reasoning":false,"input":["text"],"contextWindow":32768,"maxTokens":4096,"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0}}]}}]' && \
     node openclaw.mjs gateway --bind lan --port 8000 --allow-unconfigured
