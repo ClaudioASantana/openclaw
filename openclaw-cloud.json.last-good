@@ -1,0 +1,47 @@
+{
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "password",
+      "password": "openclaw123"
+    },
+    "controlUi": {
+      "allowedOrigins": [
+        "https://openclaw.grupocin.com.br"
+      ],
+      "dangerouslyDisableDeviceAuth": true
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "mimo/mimo-v2-pro"
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "mimo": {
+        "baseUrl": "https://proxy.grupocin.com.br/v1",
+        "api": "openai-completions",
+        "apiKey": "local",
+        "models": [
+          {
+            "id": "mimo-v2-pro",
+            "name": "Mimo V2 Pro",
+            "reasoning": false,
+            "input": ["text"],
+            "contextWindow": 32768,
+            "maxTokens": 4096,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+}
