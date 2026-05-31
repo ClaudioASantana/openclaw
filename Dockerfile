@@ -326,5 +326,6 @@ ENTRYPOINT ["tini", "-s", "--"]
 
 # Copy cloud configuration
 COPY --chown=node:node openclaw-cloud.json /home/node/.openclaw/openclaw.json
+COPY --chown=node:node workspace /home/node/.openclaw/workspace
 
 CMD node openclaw.mjs gateway --bind lan --port 8000 --allow-unconfigured
